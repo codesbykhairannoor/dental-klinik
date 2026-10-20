@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Award, Shield, Heart, Smile, MessageCircle, MapPin } from "lucide-react";
+import { Users, Award, Shield, Heart, Smile, MessageCircle, MapPin, Phone } from "lucide-react";
 import { useClinic } from "@/context/ClinicContext";
 
 export default function About() {
@@ -318,12 +318,13 @@ export default function About() {
                 Reservasi Jadwal via WhatsApp
               </Button>
             </a>
-            <a href={`tel:${wa.replace(/[^0-9]/g, "")}`}>
+            <a href={`tel:${wa.replace(/[^0-9]/g, "")}`} className="w-full sm:w-auto">
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 font-bold py-6 px-8 text-base"
+                variant="ghost"
+                className="w-full sm:w-auto border-2 border-white bg-transparent text-white hover:bg-white hover:text-sky-600 font-bold py-6 px-8 text-base shadow-md transition-all"
               >
+                <Phone className="h-5 w-5 mr-2" />
                 Hubungi: {wa}
               </Button>
             </a>

@@ -386,12 +386,13 @@ export default function Services() {
                 Chat WhatsApp Admin
               </Button>
             </a>
-            <a href={`tel:${wa.replace(/[^0-9]/g, "")}`}>
+            <a href={`tel:${wa.replace(/[^0-9]/g, "")}`} className="w-full sm:w-auto">
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 font-bold py-6 px-8 text-base"
+                variant="ghost"
+                className="w-full sm:w-auto border-2 border-white bg-transparent text-white hover:bg-white hover:text-sky-600 font-bold py-6 px-8 text-base shadow-md transition-all"
               >
+                <Phone className="h-5 w-5 mr-2" />
                 Telepon: {wa}
               </Button>
             </a>
