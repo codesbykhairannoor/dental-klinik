@@ -13,6 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.cdnfonts.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display" />
+      </head>
       <body className="font-sans antialiased bg-[#FBFBFD] text-[#1D1D1F] selection:bg-[#0071E3]/15 selection:text-[#0071E3]">
         <ClinicProvider>
           <VIPBanner />
