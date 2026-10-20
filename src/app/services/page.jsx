@@ -1,28 +1,15 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Phone,
   Clock,
   Shield,
-  Heart,
-  Zap,
-  Star,
-  CheckCircle,
-  ArrowRight,
+  CheckCircle2,
   Smile,
   Baby,
   Stethoscope,
-  Activity,
   Sparkles,
   MessageCircle,
 } from "lucide-react";
@@ -35,18 +22,18 @@ export default function Services() {
     {
       id: "umum",
       title: "Perawatan Umum",
-      icon: <Stethoscope className="h-5 w-5" />,
-      description: "Pemeriksaan dan tindakan pencegahan dasar untuk menjaga kebersihan rongga mulut",
+      icon: <Stethoscope className="h-4 w-4" />,
+      description: "Pemeriksaan dan tindakan pencegahan dasar untuk menjaga kebersihan rongga mulut Anda",
       services: [
         {
           name: "Scaling Gigi (Pembersihan Karang)",
           description:
-            "Membersihkan tumpukan karang gigi dan plak membandel menggunakan scaler ultrasonik minim ngilu.",
+            "Membersihkan tumpukan karang gigi dan plak membandel menggunakan scaler ultrasonik modern minim ngilu.",
           features: [
             "Pembersihan plak & karang gigi",
             "Polishing pemoles noda",
             "Screening kesehatan gusi",
-            "Konsultasi perawatan harian",
+            "Konsultasi kebersihan mulut",
           ],
           duration: "45-60 menit",
           price: "Rp 250.000 - Rp 450.000",
@@ -94,7 +81,7 @@ export default function Services() {
     {
       id: "estetika",
       title: "Estetika & Veneer",
-      icon: <Sparkles className="h-5 w-5" />,
+      icon: <Sparkles className="h-4 w-4" />,
       description: "Tingkatkan rasa percaya diri dengan senyum yang lebih putih, rapi, dan simetris",
       services: [
         {
@@ -141,7 +128,7 @@ export default function Services() {
     {
       id: "ortodonti",
       title: "Behel & Ortodonti",
-      icon: <Smile className="h-5 w-5" />,
+      icon: <Smile className="h-4 w-4" />,
       description: "Ratakan susunan gigi yang bertumpuk, berantakan, atau memiliki celah gigitan",
       services: [
         {
@@ -158,7 +145,7 @@ export default function Services() {
           price: "Mulai Rp 4.500.000",
         },
         {
-          name: "Behel Keramik Transparan / Sapphire",
+          name: "Behel Keramik Sapphire",
           description:
             "Bracket sewarna gigi yang samar dan estetik, cocok untuk profesional dan dewasa aktif.",
           features: [
@@ -187,8 +174,8 @@ export default function Services() {
     },
     {
       id: "bedah",
-      title: "Bedah Mulut & Implan",
-      icon: <Shield className="h-5 w-5" />,
+      title: "Bedah & Implan",
+      icon: <Shield className="h-4 w-4" />,
       description: "Tindakan bedah minor dan penggantian gigi permanen oleh dokter ahli",
       services: [
         {
@@ -209,7 +196,7 @@ export default function Services() {
           description:
             "Penanaman akar tiruan titanium ke dalam tulang rahang untuk menyangga mahkota gigi baru.",
           features: [
-            "Titanium biocompatible standar Swiss/Korea",
+            "Titanium biocompatible standar internasional",
             "Kekuatan kunyah setara gigi asli",
             "Tidak merusak gigi sehat di sebelahnya",
             "Hasil tahan puluhan tahun",
@@ -221,12 +208,12 @@ export default function Services() {
     },
     {
       id: "anak",
-      title: "Gigi Anak (Pediatrik)",
-      icon: <Baby className="h-5 w-5" />,
+      title: "Gigi Anak",
+      icon: <Baby className="h-4 w-4" />,
       description: "Pendekatan ramah anak untuk membangun kebiasaan gigi sehat sejak usia dini",
       services: [
         {
-          name: "Pemeriksaan & Pengenalan Klinik Anak",
+          name: "Pemeriksaan Ramah Anak",
           description:
             "Sesi santai memperkenalkan alat-alat dokter gigi tanpa rasa takut agar anak nyaman berkunjung.",
           features: [
@@ -239,7 +226,7 @@ export default function Services() {
           price: "Rp 150.000 - Rp 250.000",
         },
         {
-          name: "Aplikasi Topikal Fluoride & Fissure Sealant",
+          name: "Aplikasi Topikal Fluoride",
           description:
             "Pelapisan fluoride dan penutupan lekukan gigi geraham anak untuk mencegah gigi berlubang.",
           features: [
@@ -256,35 +243,33 @@ export default function Services() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-sky-50 via-white to-cyan-50 py-16 md:py-20 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <Badge className="bg-sky-100 text-sky-700 hover:bg-sky-100 text-xs font-semibold px-3 py-1">
-              Daftar Layanan Medis
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-              Layanan Perawatan Gigi {clinic}
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Solusi lengkap mulai dari pembersihan karang gigi hingga tindakan estetika dan bedah mulut di {kota}, transparan dengan standar sterilisasi teruji.
-            </p>
+    <main className="min-h-screen bg-[#FBFBFD] text-[#1D1D1F]">
+      {/* Header Section */}
+      <section className="py-16 md:py-24 border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 max-w-3xl">
+          <div className="inline-flex items-center gap-1.5 bg-white border border-black/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-3.5 py-1.5 rounded-full text-xs font-medium text-[#1D1D1F]">
+            <span>Katalog Perawatan</span>
           </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            Layanan Perawatan Gigi {clinic}
+          </h1>
+          <p className="text-lg text-[#86868B] leading-relaxed">
+            Solusi lengkap mulai dari pembersihan karang gigi hingga tindakan estetika dan bedah mulut di {kota}, transparan dengan standar sterilisasi teruji.
+          </p>
         </div>
       </section>
 
-      {/* Services Tabs Section */}
-      <section className="bg-white py-16 md:py-24">
+      {/* Apple iOS Segmented Control Tabs */}
+      <section className="py-16 md:py-24 bg-[#F5F5F7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="umum" className="space-y-12">
             <div className="flex justify-center">
-              <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 p-1 bg-slate-100 rounded-2xl h-auto">
+              <TabsList className="bg-[#E8E8ED]/80 backdrop-blur-md p-1.5 rounded-full flex flex-wrap justify-center gap-1 border border-black/[0.04] h-auto shadow-inner">
                 {serviceCategories.map((cat) => (
                   <TabsTrigger
                     key={cat.id}
                     value={cat.id}
-                    className="flex items-center space-x-2 py-3 px-4 rounded-xl data-[state=active]:bg-white data-[state=active]:shadow-sm font-semibold text-xs sm:text-sm text-gray-700"
+                    className="flex items-center gap-2 py-2 px-4 rounded-full text-xs sm:text-sm font-medium text-[#86868B] data-[state=active]:bg-white data-[state=active]:text-[#1D1D1F] data-[state=active]:shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-all"
                   >
                     {cat.icon}
                     <span>{cat.title}</span>
@@ -295,68 +280,67 @@ export default function Services() {
 
             {serviceCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="space-y-8">
-                <div className="text-center max-w-2xl mx-auto space-y-2">
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
+                <div className="text-center max-w-xl mx-auto space-y-1.5">
+                  <h2 className="text-2xl font-bold tracking-tight text-[#1D1D1F]">
                     {category.title}
                   </h2>
-                  <p className="text-gray-600 text-sm md:text-base">
+                  <p className="text-sm text-[#86868B]">
                     {category.description}
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                   {category.services.map((service, index) => (
-                    <Card
+                    <div
                       key={index}
-                      className="hover:shadow-lg transition-all duration-300 border-slate-200 flex flex-col justify-between"
+                      className="rounded-3xl bg-white border border-black/[0.06] p-7 shadow-apple hover:shadow-apple-hover transition-all duration-300 flex flex-col justify-between"
                     >
-                      <CardHeader className="space-y-3">
+                      <div className="space-y-4">
                         <div className="flex justify-between items-start gap-4">
-                          <CardTitle className="text-xl font-bold text-gray-900">
+                          <h3 className="text-lg font-bold tracking-tight text-[#1D1D1F]">
                             {service.name}
-                          </CardTitle>
-                          <Badge variant="outline" className="border-sky-500 text-sky-600 bg-sky-50 font-bold text-xs whitespace-nowrap">
+                          </h3>
+                          <span className="rounded-full bg-[#0071E3]/10 text-[#0071E3] font-semibold text-xs px-3 py-1 whitespace-nowrap">
                             {service.price}
-                          </Badge>
+                          </span>
                         </div>
-                        <CardDescription className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-sm text-[#86868B] leading-relaxed">
                           {service.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-5">
-                        <div className="space-y-2 pt-2 border-t border-slate-100">
-                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                            Keunggulan Prosedur:
+                        </p>
+                        <div className="pt-3 border-t border-black/[0.04] space-y-2">
+                          <p className="text-[11px] font-semibold text-[#86868B] uppercase tracking-wider">
+                            Detail Tindakan:
                           </p>
-                          <ul className="grid grid-cols-1 gap-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                             {service.features.map((feat, idx) => (
-                              <li key={idx} className="flex items-center space-x-2 text-sm text-gray-700">
-                                <CheckCircle className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                              <div key={idx} className="flex items-center gap-1.5 text-xs text-[#1D1D1F]">
+                                <CheckCircle2 className="h-3.5 w-3.5 text-[#0071E3] flex-shrink-0" />
                                 <span>{feat}</span>
-                              </li>
+                              </div>
                             ))}
-                          </ul>
-                        </div>
-                        <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-gray-500">
-                          <div className="flex items-center space-x-1.5">
-                            <Clock className="h-4 w-4 text-sky-500" />
-                            <span>Durasi: {service.duration}</span>
                           </div>
-                          <a
-                            href={`https://wa.me/${wa.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-                              `Halo Admin ${clinic}, saya mau tanya jadwal dan konsultasi untuk layanan *${service.name}*.`
-                            )}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Button size="sm" className="bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs">
-                              <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                              Reservasi Layanan
-                            </Button>
-                          </a>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-5 mt-4 border-t border-black/[0.04] text-xs text-[#86868B]">
+                        <div className="flex items-center gap-1.5">
+                          <Clock className="h-3.5 w-3.5 text-[#0071E3]" />
+                          <span>Durasi: {service.duration}</span>
+                        </div>
+                        <a
+                          href={`https://wa.me/${wa.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                            `Halo Admin ${clinic}, saya ingin konsultasi dan tanya jadwal untuk layanan *${service.name}*.`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <button className="rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 text-white font-medium text-xs px-4 py-2 transition-all flex items-center gap-1.5 shadow-sm">
+                            <MessageCircle className="h-3.5 w-3.5" />
+                            <span>Reservasi Layanan</span>
+                          </button>
+                        </a>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </TabsContent>
@@ -365,36 +349,30 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-sky-600 to-cyan-600 py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      {/* Apple Keynote CTA */}
+      <section className="py-20 bg-[#161617] text-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="space-y-3">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
               Butuh Konsultasi Mengenai Keluhan Gigi Anda?
             </h2>
-            <p className="text-lg text-sky-100 max-w-2xl mx-auto font-normal">
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto font-normal">
               Hubungi tim admin {clinic} di {kota}. Kami siap membantu memberikan estimasi tindakan dan memilih waktu temu dokter yang paling nyaman untuk Anda.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={waBookingUrl} target="_blank" rel="noopener noreferrer">
-              <Button
-                size="lg"
-                className="bg-white text-sky-600 hover:bg-slate-50 font-bold py-6 px-8 text-base shadow-xl"
-              >
-                <MessageCircle className="h-5 w-5 mr-2 text-sky-600" />
-                Chat WhatsApp Admin
-              </Button>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a href={waBookingUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 text-white font-medium px-8 py-3.5 text-sm sm:text-base shadow-[0_4px_16px_rgba(0,113,227,0.4)] transition-all flex items-center justify-center gap-2">
+                <MessageCircle className="h-4 w-4" />
+                <span>Chat WhatsApp Admin</span>
+              </button>
             </a>
             <a href={`tel:${wa.replace(/[^0-9]/g, "")}`} className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto border-2 border-white bg-transparent text-white hover:bg-white hover:text-sky-600 font-bold py-6 px-8 text-base shadow-md transition-all"
-              >
-                <Phone className="h-5 w-5 mr-2" />
-                Telepon: {wa}
-              </Button>
+              <button className="w-full sm:w-auto rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/20 font-medium px-7 py-3.5 text-sm sm:text-base backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span>Telepon: {wa}</span>
+              </button>
             </a>
           </div>
         </div>

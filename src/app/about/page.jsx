@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Users, Award, Shield, Heart, Smile, MessageCircle, MapPin, Phone } from "lucide-react";
 import { useClinic } from "@/context/ClinicContext";
 
@@ -12,10 +9,10 @@ export default function About() {
   const teamMembers = [
     {
       name: dr,
-      role: "Penanggung Jawab Medis & Dokter Spesialis",
+      role: "Penanggung Jawab Medis & Spesialis",
       credentials: "drg., Sp.KG (Konservasi Gigi)",
       experience: "12+ Tahun Pengalaman",
-      specialties: ["Estetika Gigi & Veneer", "Endodonti (Saluran Akar)", "Tambal Estetik"],
+      specialties: ["Estetika Gigi & Veneer", "Endodonti (Saluran Akar)", "Restorasi Estetik"],
       bio: `Berdedikasi memberikan perawatan gigi komprehensif dengan pendekatan minimal invasif. Memimpin tim medis ${clinic} untuk menghadirkan layanan bertaraf internasional di ${kota}.`,
       image:
         "https://images.pexels.com/photos/5207262/pexels-photo-5207262.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -48,25 +45,25 @@ export default function About() {
 
   const values = [
     {
-      icon: <Heart className="h-8 w-8 text-rose-500" />,
+      icon: <Heart className="h-6 w-6 text-[#0071E3]" />,
       title: "Pelayanan Ramah & Empatik",
       description:
         "Kami mendengarkan setiap keluhan pasien secara mendalam dan memberikan tindakan dengan kelembutan tanpa rasa sakit.",
     },
     {
-      icon: <Shield className="h-8 w-8 text-sky-500" />,
+      icon: <Shield className="h-6 w-6 text-[#0071E3]" />,
       title: "Sterilisasi Standar Medis",
       description:
-        "Seluruh instrumen melalui proses dekontaminasi dan autoclave suhu tinggi bersegel demi keamanan dan higienitas mutlak.",
+        "Seluruh instrumen melalui proses dekontaminasi dan autoclave suhu tinggi bersegel demi higienitas mutlak.",
     },
     {
-      icon: <Users className="h-8 w-8 text-emerald-500" />,
+      icon: <Users className="h-6 w-6 text-[#0071E3]" />,
       title: "Fokus Komunitas Keluarga",
       description:
         `Menjadi mitra kesehatan gigi terpercaya bagi ribuan keluarga di wilayah ${kota} dan sekitarnya.`,
     },
     {
-      icon: <Award className="h-8 w-8 text-amber-500" />,
+      icon: <Award className="h-6 w-6 text-[#0071E3]" />,
       title: "Inovasi & Teknologi Terkini",
       description:
         "Terus memperbarui peralatan dan metode medis dental modern untuk diagnosa yang akurat dan hasil yang tahan lama.",
@@ -101,195 +98,144 @@ export default function About() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-sky-50 via-white to-cyan-50 py-20 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6 max-w-3xl mx-auto">
-            <Badge className="bg-sky-100 text-sky-700 hover:bg-sky-100 text-xs font-semibold px-3 py-1">
-              Tentang {clinic}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-              Dedikasi Penuh untuk Kesehatan Senyum Anda
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              Kami hadir untuk memberikan pengalaman perawatan gigi yang aman, ramah, dan bebas cemas bagi seluruh anggota keluarga di {kota}.
-            </p>
+    <main className="min-h-screen bg-[#FBFBFD] text-[#1D1D1F]">
+      {/* Header Section */}
+      <section className="py-16 md:py-24 border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 max-w-3xl">
+          <div className="inline-flex items-center gap-1.5 bg-white border border-black/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-3.5 py-1.5 rounded-full text-xs font-medium text-[#1D1D1F]">
+            <span>Tentang {clinic}</span>
           </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            Dedikasi Penuh untuk Senyum Sehat Anda
+          </h1>
+          <p className="text-lg text-[#86868B] leading-relaxed">
+            Kami hadir untuk memberikan pengalaman perawatan gigi yang aman, ramah, dan bebas cemas bagi seluruh anggota keluarga di {kota}.
+          </p>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="bg-white py-20">
+      {/* Philosophy Section */}
+      <section className="py-20 bg-white border-b border-black/[0.04]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge className="bg-sky-100 text-sky-700 hover:bg-sky-100 text-xs font-semibold px-3 py-1">
-                  Filosofi Klinik
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-                  Perawatan Berkualitas dengan Sentuhan Personal
-                </h2>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                  Di {clinic}, kami percaya bahwa senyum yang sehat adalah pintu menuju kepercayaan diri dan kualitas hidup yang lebih baik. Setiap pasien memiliki kebutuhan unik, sehingga kami menyusun rencana perawatan yang disesuaikan secara transparan.
-                </p>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                  Dengan mengintegrasikan ilmu kedokteran gigi mutakhir, peralatan berstandar tinggi, dan suasana klinik yang tenang, kami mengubah pandangan masyarakat bahwa periksa gigi itu menakutkan.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-slate-100">
-                <div className="space-y-1">
-                  <div className="text-3xl md:text-4xl font-extrabold text-sky-600">{rating} ★</div>
-                  <div className="text-gray-600 text-sm font-medium">Rating Kepuasan Pasien</div>
+            <div className="space-y-6">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+                Filosofi Pelayanan
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D1D1F]">
+                Perawatan Berkualitas dengan Sentuhan Personal
+              </h2>
+              <p className="text-base text-[#86868B] leading-relaxed">
+                Di {clinic}, kami percaya bahwa senyum yang sehat adalah pintu menuju kepercayaan diri dan kualitas hidup yang lebih baik. Setiap pasien memiliki kebutuhan unik, sehingga kami menyusun rencana perawatan yang disesuaikan secara transparan.
+              </p>
+              <p className="text-base text-[#86868B] leading-relaxed">
+                Dengan mengintegrasikan ilmu kedokteran gigi mutakhir, peralatan berstandar tinggi, dan suasana klinik yang tenang, kami mengubah pandangan masyarakat bahwa periksa gigi itu menakutkan.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/[0.04]">
+                <div className="p-4 rounded-2xl bg-[#F5F5F7]">
+                  <div className="text-3xl font-bold text-[#1D1D1F]">{rating} ★</div>
+                  <div className="text-xs text-[#86868B] mt-0.5">Rating Kepuasan Google</div>
                 </div>
-                <div className="space-y-1">
-                  <div className="text-3xl md:text-4xl font-extrabold text-sky-600">{ulasan}+</div>
-                  <div className="text-gray-600 text-sm font-medium">Pasien Terlayani di {kota}</div>
+                <div className="p-4 rounded-2xl bg-[#F5F5F7]">
+                  <div className="text-3xl font-bold text-[#1D1D1F]">{ulasan}+</div>
+                  <div className="text-xs text-[#86868B] mt-0.5">Pasien di {kota}</div>
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-sky-100 via-cyan-50 to-emerald-50 rounded-3xl p-10 flex items-center justify-center border border-sky-100 shadow-xl">
-              <div className="text-center space-y-4">
-                <div className="w-20 h-20 bg-sky-500 rounded-2xl flex items-center justify-center mx-auto shadow-md">
-                  <Smile className="h-10 w-10 text-white" />
+
+            <div className="rounded-[32px] bg-gradient-to-br from-[#F5F5F7] to-[#E8E8ED] p-10 border border-black/[0.06] text-center space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-[#0071E3] flex items-center justify-center mx-auto text-white shadow-md">
+                <Smile className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#1D1D1F]">
+                Kenyamanan Pasien Prioritas Utama
+              </h3>
+              <p className="text-sm text-[#86868B] max-w-xs mx-auto leading-relaxed">
+                Ruang tunggu sejuk, staf sigap, dan dokter yang mendampingi dengan teliti di setiap tindakan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-[#F5F5F7] border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-16 max-w-xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+              Nilai & Prinsip
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D1D1F]">
+              Komitmen Medis yang Kami Junjung
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((v, i) => (
+              <div
+                key={i}
+                className="rounded-3xl bg-white border border-black/[0.06] p-7 shadow-apple hover:shadow-apple-hover transition-all duration-300 space-y-4 text-center group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center mx-auto transition-transform group-hover:scale-105">
+                  {v.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Kenyamanan Pasien Prioritas Utama
+                <h3 className="font-bold text-base text-[#1D1D1F]">
+                  {v.title}
                 </h3>
-                <p className="text-gray-600 text-sm max-w-xs mx-auto leading-relaxed">
-                  Ruang tunggu yang sejuk, staf yang sigap, dan dokter yang mendampingi dengan teliti di setiap tindakan.
+                <p className="text-xs text-[#86868B] leading-relaxed">
+                  {v.description}
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="bg-gray-50 py-20 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100 text-xs font-semibold px-3 py-1">
-              Nilai & Komitmen Kami
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Prinsip Pelayanan yang Kami Junjung
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              Empat pilar utama yang mendasari setiap prosedur dan interaksi medis di {clinic}.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-all duration-300 group border-slate-200 bg-white"
-              >
-                <CardContent className="p-7 space-y-4">
-                  <div className="group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                    {value.icon}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="bg-white py-20">
+      {/* Team Showcase */}
+      <section className="py-20 bg-white border-b border-black/[0.04]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 text-xs font-semibold px-3 py-1">
-              Tim Medis
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Dokter Gigi Berpengalaman & Spesialis
+          <div className="text-center space-y-3 mb-16 max-w-xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
+              Tim Dokter Spesialis
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D1D1F]">
+              Dokter Berlisensi & Berpengalaman
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              Ditangani langsung oleh dokter berizin resmi dengan keahlian spesifik di bidang konservasi, ortodonti, dan perawatan anak.
-            </p>
           </div>
+
           <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-xl transition-shadow duration-300 border-slate-200 overflow-hidden"
-              >
-                <CardContent className="p-6 space-y-6">
-                  <div className="aspect-square bg-slate-100 rounded-2xl overflow-hidden shadow-inner">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-center space-y-1">
-                      <h3 className="text-xl font-bold text-gray-900">
-                        {member.name}
-                      </h3>
-                      <p className="text-sky-600 font-semibold text-sm">{member.role}</p>
-                      <p className="text-xs text-gray-500">
-                        {member.credentials} • {member.experience}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 justify-center">
-                      {member.specialties.map((specialty, idx) => (
-                        <Badge
-                          key={idx}
-                          variant="secondary"
-                          className="text-xs font-normal bg-sky-50 text-sky-700"
-                        >
-                          {specialty}
-                        </Badge>
-                      ))}
-                    </div>
-                    <p className="text-xs md:text-sm text-gray-600 text-center leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="bg-gray-50 py-20 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 text-xs font-semibold px-3 py-1">
-              Perjalanan Kami
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Jejak Langkah & Standar Kualitas
-            </h2>
-          </div>
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {milestones.map((milestone, index) => (
+            {teamMembers.map((m, index) => (
               <div
                 key={index}
-                className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm"
+                className="rounded-3xl bg-white border border-black/[0.06] p-6 shadow-apple hover:shadow-apple-hover transition-all duration-300 space-y-5 flex flex-col justify-between"
               >
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-sky-500 rounded-2xl flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold text-xs uppercase text-center px-1">
-                      {milestone.year}
-                    </span>
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden bg-[#F5F5F7] border border-black/[0.04]">
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="flex-1 space-y-1">
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {milestone.event}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{milestone.description}</p>
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-bold text-[#1D1D1F]">
+                      {m.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-[#0071E3]">{m.role}</p>
+                    <p className="text-[11px] text-[#86868B]">{m.credentials} • {m.experience}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {m.specialties.map((s, idx) => (
+                      <span
+                        key={idx}
+                        className="rounded-full bg-[#F5F5F7] text-[#1D1D1F] text-[11px] px-2.5 py-0.5 font-medium"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-xs text-[#86868B] leading-relaxed">
+                    {m.bio}
+                  </p>
                 </div>
               </div>
             ))}
@@ -297,36 +243,30 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-sky-600 to-cyan-600 py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      {/* Apple Keynote CTA */}
+      <section className="py-20 bg-[#161617] text-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="space-y-3">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
               Ingin Berkonsultasi dengan Tim Dokter {clinic}?
             </h2>
-            <p className="text-lg text-sky-100 max-w-2xl mx-auto font-normal">
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto font-normal">
               Reservasi jadwal periksa Anda sekarang untuk mendapatkan evaluasi menyeluruh mengenai kesehatan gigi dan mulut Anda.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={waBookingUrl} target="_blank" rel="noopener noreferrer">
-              <Button
-                size="lg"
-                className="bg-white text-sky-600 hover:bg-slate-50 font-bold py-6 px-8 text-base shadow-xl"
-              >
-                <MessageCircle className="h-5 w-5 mr-2 text-sky-600" />
-                Reservasi Jadwal via WhatsApp
-              </Button>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a href={waBookingUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 text-white font-medium px-8 py-3.5 text-sm sm:text-base shadow-[0_4px_16px_rgba(0,113,227,0.4)] transition-all flex items-center justify-center gap-2">
+                <MessageCircle className="h-4 w-4" />
+                <span>Reservasi Jadwal via WhatsApp</span>
+              </button>
             </a>
             <a href={`tel:${wa.replace(/[^0-9]/g, "")}`} className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto border-2 border-white bg-transparent text-white hover:bg-white hover:text-sky-600 font-bold py-6 px-8 text-base shadow-md transition-all"
-              >
-                <Phone className="h-5 w-5 mr-2" />
-                Hubungi: {wa}
-              </Button>
+              <button className="w-full sm:w-auto rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/20 font-medium px-7 py-3.5 text-sm sm:text-base backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span>Hubungi: {wa}</span>
+              </button>
             </a>
           </div>
         </div>

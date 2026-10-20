@@ -9,87 +9,91 @@ const Footer = () => {
   const { clinic, kota, alamat, wa, queryStr } = useClinic();
 
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="space-y-4">
+    <footer className="bg-[#F5F5F7] text-[#1D1D1F] py-16 border-t border-black/[0.06] text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Brand Info */}
+          <div className="space-y-3 col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center">
-                <Smile className="h-5 w-5 text-white" />
+              <div className="w-7 h-7 bg-[#0071E3] rounded-lg flex items-center justify-center text-white shadow-sm">
+                <Smile className="h-4 w-4 text-white" />
               </div>
-              <span className="text-lg font-bold">{clinic}</span>
+              <span className="text-sm font-semibold tracking-tight text-[#1D1D1F]">{clinic}</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Layanan dokter gigi spesialis terpercaya di {kota}. Perawatan modern, steril, dan ramah keluarga.
+            <p className="text-[#86868B] text-xs leading-relaxed">
+              Pelayanan dokter gigi spesialis terpercaya di {kota}. Prosedur modern, steril, dan ramah keluarga.
             </p>
           </div>
-          <div className="space-y-4">
-            <h3 className="font-semibold text-white">Navigasi Halaman</h3>
-            <div className="space-y-2 text-gray-400 text-sm">
+
+          {/* Navigation */}
+          <div className="space-y-3">
+            <h4 className="font-semibold text-xs tracking-tight text-[#1D1D1F]">Halaman</h4>
+            <div className="space-y-2 text-[#86868B]">
               <div>
-                <Link
-                  href={`/${queryStr}`}
-                  className="hover:text-white transition-colors"
-                >
+                <Link href={`/${queryStr}`} className="hover:text-[#0071E3] transition-colors">
                   Beranda
                 </Link>
               </div>
               <div>
-                <Link
-                  href={`/services${queryStr}`}
-                  className="hover:text-white transition-colors"
-                >
-                  Daftar Layanan & Biaya
+                <Link href={`/services${queryStr}`} className="hover:text-[#0071E3] transition-colors">
+                  Layanan & Biaya
                 </Link>
               </div>
               <div>
-                <Link
-                  href={`/about${queryStr}`}
-                  className="hover:text-white transition-colors"
-                >
-                  Tentang Tim Dokter
+                <Link href={`/about${queryStr}`} className="hover:text-[#0071E3] transition-colors">
+                  Tim Dokter
                 </Link>
               </div>
               <div>
-                <Link
-                  href={`/contact${queryStr}`}
-                  className="hover:text-white transition-colors"
-                >
-                  Kontak & Reservasi
+                <Link href={`/contact${queryStr}`} className="hover:text-[#0071E3] transition-colors">
+                  Kontak & Lokasi
                 </Link>
               </div>
             </div>
           </div>
-          <div className="space-y-4">
-            <h3 className="font-semibold text-white">Layanan Unggulan</h3>
-            <div className="space-y-2 text-gray-400 text-sm">
+
+          {/* Services */}
+          <div className="space-y-3">
+            <h4 className="font-semibold text-xs tracking-tight text-[#1D1D1F]">Layanan Unggulan</h4>
+            <div className="space-y-2 text-[#86868B]">
               <div>Pembersihan Karang (Scaling)</div>
               <div>Veneer & Pemutihan Gigi</div>
-              <div>Pemasangan Behel (Kawat Gigi)</div>
-              <div>Implan Gigi & Perawatan Saluran Akar</div>
-              <div>Pemeriksaan Gigi Anak</div>
+              <div>Behel & Ortodonti</div>
+              <div>Implan & Saluran Akar</div>
+              <div>Perawatan Gigi Anak</div>
             </div>
           </div>
-          <div className="space-y-4">
-            <h3 className="font-semibold text-white">Kontak & Praktek</h3>
-            <div className="space-y-2.5 text-gray-400 text-sm">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-sky-400 flex-shrink-0" />
-                <span>{wa}</span>
+
+          {/* Contact */}
+          <div className="space-y-3 col-span-2 md:col-span-1">
+            <h4 className="font-semibold text-xs tracking-tight text-[#1D1D1F]">Praktek & Alamat</h4>
+            <div className="space-y-2 text-[#86868B]">
+              <div className="flex items-center gap-1.5">
+                <Phone className="h-3.5 w-3.5 text-[#0071E3] flex-shrink-0" />
+                <span className="font-medium text-[#1D1D1F]">{wa}</span>
               </div>
-              <div className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-sky-400 flex-shrink-0 mt-0.5" />
+              <div className="flex items-start gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-[#0071E3] flex-shrink-0 mt-0.5" />
                 <span className="leading-snug">{alamat}</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4 text-sky-400 flex-shrink-0" />
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 text-[#0071E3] flex-shrink-0" />
                 <span>Senin - Minggu: 09.00 - 21.00 WIB</span>
               </div>
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-xs">
+
+        {/* Legal Disclaimer / Apple Copyright */}
+        <div className="pt-6 border-t border-black/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#86868B]">
           <p>&copy; 2026 {clinic} ({kota}). Hak Cipta Dilindungi.</p>
+          <div className="flex items-center space-x-4">
+            <span className="hover:text-[#1D1D1F] transition-colors cursor-pointer">Kebijakan Privasi</span>
+            <span>•</span>
+            <span className="hover:text-[#1D1D1F] transition-colors cursor-pointer">Syarat & Ketentuan</span>
+            <span>•</span>
+            <span className="hover:text-[#1D1D1F] transition-colors cursor-pointer">Peta Situs</span>
+          </div>
         </div>
       </div>
     </footer>

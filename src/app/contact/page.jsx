@@ -1,13 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -18,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import {
   Phone,
   MapPin,
@@ -26,7 +17,7 @@ import {
   Calendar,
   MessageCircle,
   HelpCircle,
-  CheckCircle2,
+  ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
 import { useClinic } from "@/context/ClinicContext";
@@ -57,12 +48,12 @@ export default function Contact() {
   const officeHours = [
     { day: "Senin - Jumat", hours: "09.00 - 21.00 WIB" },
     { day: "Sabtu", hours: "09.00 - 18.00 WIB" },
-    { day: "Minggu / Libur", hours: "10.00 - 16.00 WIB (Dengan Perjanjian)" },
+    { day: "Minggu / Libur", hours: "10.00 - 16.00 WIB (Dengan Janji)" },
   ];
 
   const contactMethods = [
     {
-      icon: <MessageCircle className="h-6 w-6 text-emerald-600" />,
+      icon: <MessageCircle className="h-5 w-5 text-[#0071E3]" />,
       title: "Chat WhatsApp Resmi",
       value: wa,
       description: "Respon cepat untuk tanya jadwal dan estimasi biaya",
@@ -70,7 +61,7 @@ export default function Contact() {
       url: waBookingUrl,
     },
     {
-      icon: <Phone className="h-6 w-6 text-sky-600" />,
+      icon: <Phone className="h-5 w-5 text-[#0071E3]" />,
       title: "Panggilan Telepon",
       value: wa,
       description: "Hubungi resepsionis pada jam operasional klinik",
@@ -78,7 +69,7 @@ export default function Contact() {
       url: `tel:${wa.replace(/[^0-9]/g, "")}`,
     },
     {
-      icon: <MapPin className="h-6 w-6 text-rose-600" />,
+      icon: <MapPin className="h-5 w-5 text-[#0071E3]" />,
       title: "Lokasi Praktek",
       value: alamat,
       description: `Klinik dental modern di area strategis ${kota}`,
@@ -107,247 +98,238 @@ export default function Contact() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-sky-50 via-white to-cyan-50 py-16 md:py-20 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <Badge className="bg-sky-100 text-sky-700 hover:bg-sky-100 text-xs font-semibold px-3 py-1">
-              Hubungi Kami
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-              Kontak & Lokasi Praktek {clinic}
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Tim kami siap melayani konsultasi dan reservasi jadwal perawatan gigi Anda di {kota}. Silakan hubungi kami melalui formulir atau kontak di bawah ini.
-            </p>
+    <main className="min-h-screen bg-[#FBFBFD] text-[#1D1D1F]">
+      {/* Header Section */}
+      <section className="py-16 md:py-24 border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 max-w-3xl">
+          <div className="inline-flex items-center gap-1.5 bg-white border border-black/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-3.5 py-1.5 rounded-full text-xs font-medium text-[#1D1D1F]">
+            <span>Kontak & Lokasi</span>
           </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            Hubungi {clinic}
+          </h1>
+          <p className="text-lg text-[#86868B] leading-relaxed">
+            Tim kami siap melayani konsultasi dan reservasi jadwal perawatan gigi Anda di {kota}. Silakan gunakan kontak atau formulir di bawah ini.
+          </p>
         </div>
       </section>
 
-      {/* Contact Info & Form Section */}
-      <section className="bg-white py-16 md:py-20">
+      {/* Contact Content */}
+      <section className="py-16 md:py-24 bg-[#F5F5F7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Contact Information & Hours */}
-            <div className="space-y-8">
-              <div className="space-y-3">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Informasi Klinik
-                </h2>
-                <p className="text-gray-600 text-sm">
-                  Kami selalu siap menjawab pertanyaan seputar kesehatan gigi dan jadwal dokter.
-                </p>
-              </div>
-
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left Info Column */}
+            <div className="space-y-6">
               <div className="space-y-4">
                 {contactMethods.map((method, index) => (
-                  <Card key={index} className="border-slate-200 hover:border-sky-300 transition-colors">
-                    <CardContent className="p-5 flex items-start space-x-4">
-                      <div className="p-3 bg-slate-50 rounded-xl flex-shrink-0">
-                        {method.icon}
+                  <div
+                    key={index}
+                    className="rounded-3xl bg-white border border-black/[0.06] p-6 shadow-apple hover:shadow-apple-hover transition-all duration-300 flex items-start gap-4"
+                  >
+                    <div className="w-10 h-10 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center flex-shrink-0 text-[#0071E3]">
+                      {method.icon}
+                    </div>
+                    <div className="space-y-1 flex-1 min-w-0">
+                      <div className="font-semibold text-[#1D1D1F] text-sm">
+                        {method.title}
                       </div>
-                      <div className="space-y-1 flex-1">
-                        <div className="font-bold text-gray-900 text-sm">
-                          {method.title}
-                        </div>
-                        <div className="text-sm font-semibold text-sky-600 break-words">
-                          {method.value}
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          {method.description}
-                        </div>
-                        <div className="pt-2">
-                          <a
-                            href={method.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block text-xs font-bold text-sky-600 hover:text-sky-700 underline underline-offset-2"
-                          >
-                            {method.action} →
-                          </a>
-                        </div>
+                      <div className="text-xs font-semibold text-[#0071E3] break-words">
+                        {method.value}
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div className="text-[11px] text-[#86868B]">
+                        {method.description}
+                      </div>
+                      <div className="pt-2">
+                        <a
+                          href={method.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-[#0071E3] hover:text-[#0077ED]"
+                        >
+                          <span>{method.action}</span>
+                          <ArrowRight className="h-3 w-3" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
 
-              {/* Jam Praktek */}
-              <Card className="border-slate-200 bg-sky-50/50">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-5 w-5 text-sky-600" />
-                    <CardTitle className="text-base font-bold text-gray-900">
-                      Jadwal Praktek Klinik
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-3 pt-0">
+              {/* Hours Card */}
+              <div className="rounded-3xl bg-white border border-black/[0.06] p-6 shadow-apple space-y-4">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-[#0071E3]" />
+                  <h3 className="font-semibold text-sm text-[#1D1D1F]">
+                    Jadwal Operasional Klinik
+                  </h3>
+                </div>
+                <div className="space-y-2 pt-2 border-t border-black/[0.04]">
                   {officeHours.map((schedule, idx) => (
-                    <div key={idx} className="flex justify-between items-center text-xs py-1.5 border-b border-sky-100 last:border-b-0">
-                      <span className="font-semibold text-gray-700">{schedule.day}</span>
-                      <span className="text-gray-600 font-medium">{schedule.hours}</span>
+                    <div key={idx} className="flex justify-between items-center text-xs py-1.5 border-b border-black/[0.03] last:border-b-0">
+                      <span className="font-medium text-[#1D1D1F]">{schedule.day}</span>
+                      <span className="text-[#86868B]">{schedule.hours}</span>
                     </div>
                   ))}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            {/* Direct WhatsApp Booking Form */}
+            {/* Right Booking Form (iOS Settings Card Style) */}
             <div className="lg:col-span-2">
-              <Card className="border-slate-200 shadow-xl">
-                <CardHeader className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="h-5 w-5 text-sky-600" />
-                    <CardTitle className="text-2xl font-bold text-gray-900">
-                      Formulir Reservasi Jadwal Periksa
-                    </CardTitle>
+              <div className="rounded-3xl bg-white border border-black/[0.06] p-8 sm:p-10 shadow-apple space-y-6">
+                <div className="space-y-1.5">
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#0071E3]">
+                    <Calendar className="h-4 w-4" />
+                    <span>Reservasi Langsung</span>
                   </div>
-                  <CardDescription className="text-sm text-gray-600">
-                    Isi data di bawah ini untuk terhubung langsung ke WhatsApp Admin {clinic}. Slot periksa akan langsung dikonfirmasi.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleFormSubmit} className="space-y-5">
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <Label htmlFor="nama" className="text-sm font-semibold text-gray-700">
-                          Nama Pasien / Wali *
-                        </Label>
-                        <Input
-                          id="nama"
-                          placeholder="Contoh: Budi Santoso"
-                          required
-                          value={formData.nama}
-                          onChange={(e) => handleInputChange("nama", e.target.value)}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="noHp" className="text-sm font-semibold text-gray-700">
-                          Nomor WhatsApp *
-                        </Label>
-                        <Input
-                          id="noHp"
-                          placeholder="Contoh: 081234567890"
-                          required
-                          value={formData.noHp}
-                          onChange={(e) => handleInputChange("noHp", e.target.value)}
-                        />
-                      </div>
-                    </div>
+                  <h2 className="text-2xl font-bold tracking-tight text-[#1D1D1F]">
+                    Formulir Jadwal Periksa
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#86868B]">
+                    Isi data di bawah ini untuk langsung terhubung ke WhatsApp Admin {clinic}.
+                  </p>
+                </div>
 
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <Label htmlFor="layanan" className="text-sm font-semibold text-gray-700">
-                          Pilihan Layanan *
-                        </Label>
-                        <Select
-                          value={formData.layanan}
-                          onValueChange={(val) => handleInputChange("layanan", val)}
-                        >
-                          <SelectTrigger id="layanan">
-                            <SelectValue placeholder="Pilih Jenis Perawatan" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="Pembersihan Karang Gigi (Scaling)">
-                              Pembersihan Karang Gigi (Scaling)
-                            </SelectItem>
-                            <SelectItem value="Tambal Gigi Estetik Komposit">
-                              Tambal Gigi Estetik Komposit
-                            </SelectItem>
-                            <SelectItem value="Teeth Whitening / Bleaching">
-                              Teeth Whitening / Bleaching
-                            </SelectItem>
-                            <SelectItem value="Behel / Ortodonti">
-                              Konsultasi Pasang Behel Gigi
-                            </SelectItem>
-                            <SelectItem value="Implan Gigi / Gigi Tiruan">
-                              Implan Gigi / Gigi Tiruan
-                            </SelectItem>
-                            <SelectItem value="Pemeriksaan Gigi Anak">
-                              Pemeriksaan Gigi Anak
-                            </SelectItem>
-                            <SelectItem value="Konsultasi Keluhan Lainnya">
-                              Konsultasi Keluhan Lainnya
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="tanggal" className="text-sm font-semibold text-gray-700">
-                          Rencana Tanggal Kunjungan
-                        </Label>
-                        <Input
-                          id="tanggal"
-                          type="date"
-                          value={formData.tanggal}
-                          onChange={(e) => handleInputChange("tanggal", e.target.value)}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="keluhan" className="text-sm font-semibold text-gray-700">
-                        Keluhan atau Catatan Tambahan (Opsional)
+                <form onSubmit={handleFormSubmit} className="space-y-5">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="nama" className="text-xs font-medium text-[#1D1D1F]">
+                        Nama Pasien / Wali *
                       </Label>
-                      <Textarea
-                        id="keluhan"
-                        rows={3}
-                        placeholder="Contoh: Gigi belakang sering ngilu saat minum dingin, ingin diperiksa oleh dokter."
-                        value={formData.keluhan}
-                        onChange={(e) => handleInputChange("keluhan", e.target.value)}
+                      <Input
+                        id="nama"
+                        placeholder="Contoh: Budi Santoso"
+                        required
+                        className="rounded-xl bg-[#F5F5F7] border border-black/[0.04] focus:bg-white text-sm py-2.5"
+                        value={formData.nama}
+                        onChange={(e) => handleInputChange("nama", e.target.value)}
                       />
                     </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="noHp" className="text-xs font-medium text-[#1D1D1F]">
+                        Nomor WhatsApp *
+                      </Label>
+                      <Input
+                        id="noHp"
+                        placeholder="Contoh: 081234567890"
+                        required
+                        className="rounded-xl bg-[#F5F5F7] border border-black/[0.04] focus:bg-white text-sm py-2.5"
+                        value={formData.noHp}
+                        onChange={(e) => handleInputChange("noHp", e.target.value)}
+                      />
+                    </div>
+                  </div>
 
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-6 text-base shadow-lg shadow-emerald-600/20"
-                    >
-                      <MessageCircle className="h-5 w-5 mr-2" />
-                      Kirim Reservasi ke WhatsApp Klinik
-                    </Button>
-                    <p className="text-center text-xs text-gray-500">
-                      Privasi Anda aman. Pesan langsung dikirimkan ke nomor WhatsApp resmi {clinic}.
-                    </p>
-                  </form>
-                </CardContent>
-              </Card>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="layanan" className="text-xs font-medium text-[#1D1D1F]">
+                        Pilihan Layanan *
+                      </Label>
+                      <Select
+                        value={formData.layanan}
+                        onValueChange={(val) => handleInputChange("layanan", val)}
+                      >
+                        <SelectTrigger id="layanan" className="rounded-xl bg-[#F5F5F7] border border-black/[0.04] text-sm py-2.5">
+                          <SelectValue placeholder="Pilih Jenis Perawatan" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-2xl shadow-xl">
+                          <SelectItem value="Pembersihan Karang Gigi (Scaling)">
+                            Pembersihan Karang Gigi (Scaling)
+                          </SelectItem>
+                          <SelectItem value="Tambal Gigi Estetik Komposit">
+                            Tambal Gigi Estetik Komposit
+                          </SelectItem>
+                          <SelectItem value="Teeth Whitening / Bleaching">
+                            Teeth Whitening / Bleaching
+                          </SelectItem>
+                          <SelectItem value="Behel / Ortodonti">
+                            Konsultasi Pasang Behel Gigi
+                          </SelectItem>
+                          <SelectItem value="Implan Gigi / Gigi Tiruan">
+                            Implan Gigi / Gigi Tiruan
+                          </SelectItem>
+                          <SelectItem value="Pemeriksaan Gigi Anak">
+                            Pemeriksaan Gigi Anak
+                          </SelectItem>
+                          <SelectItem value="Konsultasi Keluhan Lainnya">
+                            Konsultasi Keluhan Lainnya
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <Label htmlFor="tanggal" className="text-xs font-medium text-[#1D1D1F]">
+                        Rencana Tanggal Kunjungan
+                      </Label>
+                      <Input
+                        id="tanggal"
+                        type="date"
+                        className="rounded-xl bg-[#F5F5F7] border border-black/[0.04] text-sm py-2.5"
+                        value={formData.tanggal}
+                        onChange={(e) => handleInputChange("tanggal", e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="keluhan" className="text-xs font-medium text-[#1D1D1F]">
+                      Keluhan atau Catatan Tambahan (Opsional)
+                    </Label>
+                    <Textarea
+                      id="keluhan"
+                      rows={3}
+                      placeholder="Contoh: Gigi belakang sering ngilu saat minum dingin..."
+                      className="rounded-xl bg-[#F5F5F7] border border-black/[0.04] text-sm"
+                      value={formData.keluhan}
+                      onChange={(e) => handleInputChange("keluhan", e.target.value)}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.99] text-white font-medium py-3.5 text-sm sm:text-base shadow-[0_4px_14px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Kirim Reservasi ke WhatsApp Klinik</span>
+                  </button>
+                  <p className="text-center text-[11px] text-[#86868B]">
+                    Data aman. Format langsung dibuat untuk nomor WhatsApp resmi {clinic}.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 py-16 border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white border-t border-black/[0.04]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-3 mb-12">
-            <Badge className="bg-sky-100 text-sky-700 hover:bg-sky-100 text-xs font-semibold px-3 py-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071E3]">
               Tanya Jawab Pasien
-            </Badge>
-            <h2 className="text-3xl font-extrabold text-gray-900">
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight text-[#1D1D1F]">
               Pertanyaan yang Sering Diajukan
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {faqs.map((faq, idx) => (
-              <Card key={idx} className="border-slate-200 bg-white">
-                <CardHeader className="pb-2">
-                  <div className="flex items-start space-x-2">
-                    <HelpCircle className="h-5 w-5 text-sky-500 flex-shrink-0 mt-0.5" />
-                    <CardTitle className="text-base font-bold text-gray-900 leading-snug">
-                      {faq.q}
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-600 leading-relaxed pl-7">
-                    {faq.a}
-                  </p>
-                </CardContent>
-              </Card>
+              <div
+                key={idx}
+                className="rounded-3xl bg-[#F5F5F7] border border-black/[0.04] p-6 space-y-2.5"
+              >
+                <div className="flex items-start gap-2.5">
+                  <HelpCircle className="h-4 w-4 text-[#0071E3] flex-shrink-0 mt-0.5" />
+                  <h3 className="font-semibold text-sm text-[#1D1D1F] leading-snug">
+                    {faq.q}
+                  </h3>
+                </div>
+                <p className="text-xs text-[#86868B] leading-relaxed pl-6.5">
+                  {faq.a}
+                </p>
+              </div>
             ))}
           </div>
         </div>

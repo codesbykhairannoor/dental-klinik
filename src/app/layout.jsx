@@ -1,11 +1,8 @@
 import Header from "@/components/Header";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import { ClinicProvider } from "@/context/ClinicContext";
 import VIPBanner from "@/components/VIPBanner";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Klinik Spesialis Gigi Modern & Terpercaya",
@@ -15,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id">
-      <body className={inter.className}>
+    <html lang="id" className="scroll-smooth">
+      <body className="font-sans antialiased bg-[#FBFBFD] text-[#1D1D1F] selection:bg-[#0071E3]/15 selection:text-[#0071E3]">
         <ClinicProvider>
           <VIPBanner />
           <Header />
