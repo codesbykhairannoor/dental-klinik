@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, MapPin, Phone, Smile } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useClinic } from "@/context/ClinicContext";
@@ -15,8 +15,8 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="space-y-3 col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2">
-              <div className="w-7 h-7 bg-[#0071E3] rounded-lg flex items-center justify-center text-white shadow-sm">
-                <Smile className="h-4 w-4 text-white" />
+              <div className="w-7 h-7 flex items-center justify-center">
+                <img src="/logo.svg" alt="Dental Logo" className="w-7 h-7 object-contain" />
               </div>
               <span className="text-sm font-semibold tracking-tight text-[#1D1D1F]">{clinic}</span>
             </div>

@@ -1,14 +1,20 @@
 "use client";
 
 import React, { createContext, useContext, Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams, usePathname } from "next/navigation";
+import clinicsData from "@/data/clinics.json";
 
 const ClinicContext = createContext();
 
+const DEFAULT_MY_WA = "6285718203535"; // WhatsApp Pengembang / User (+62 857-1820-3535)
+
 function ClinicContextProvider({ children }) {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const params = useParams();
 
   // Ambil parameter dari URL
+  const pParam = searchParams.get("p") || searchParams.get("id") || searchParams.get("lead");
   const clinicParam = searchParams.get("clinic") || searchParams.get("name");
   const kotaParam = searchParams.get("kota") || searchParams.get("city");
   const ratingParam = searchParams.get("rating");
@@ -27,13 +33,27 @@ function ClinicContextProvider({ children }) {
     alamat: "Jl. Senopati No. 45, Kebayoran Baru, Jakarta Selatan",
     dr: "drg. Amanda Putri, Sp.KG",
     wa: "6281298765432",
-    myWa: "6281234567890",
+    myWa: DEFAULT_MY_WA,
     isPitch: false,
     queryStr: "",
   });
 
   useEffect(() => {
-    // Cek sessionStorage terlebih dahulu
+    // 1. Cek slug dari route /p/[slug] atau query ?p=[slug] / ?id=[id]
+    const routeSlug = params?.slug || (pathname?.startsWith("/p/") ? pathname.split("/p/")[1]?.split("/")[0] : null);
+    const lookupKey = routeSlug || pParam;
+
+    let matchedClinic = null;
+    if (lookupKey) {
+      const decoded = decodeURIComponent(lookupKey).toLowerCase().trim();
+      matchedClinic = clinicsData.find(
+        (c) =>
+          c.slug.toLowerCase() === decoded ||
+          String(c.id) === decoded
+      );
+    }
+
+    // 2. Cek sessionStorage jika ada data sebelumnya
     let saved = {};
     if (typeof window !== "undefined") {
       try {
@@ -45,23 +65,30 @@ function ClinicContextProvider({ children }) {
     }
 
     const isPitchActive = Boolean(
+      matchedClinic ||
+      lookupKey ||
       clinicParam ||
       kotaParam ||
       searchParams.get("pitch") === "true" ||
       saved.isPitch
     );
 
+    // Prioritas: query param spesifik > data matchedClinic dari database 100 leads > saved sessionStorage > default demo
     const updated = {
-      clinic: clinicParam || saved.clinic || "BrightSmile Dental",
-      kota: kotaParam || saved.kota || "Jakarta Selatan",
-      rating: ratingParam || saved.rating || "4.9",
-      ulasan: ulasanParam || saved.ulasan || "420",
-      alamat: alamatParam || saved.alamat || "Jl. Senopati No. 45, Kebayoran Baru, Jakarta Selatan",
-      dr: drParam || saved.dr || "drg. Amanda Putri, Sp.KG",
-      wa: waParam || saved.wa || "6281298765432",
-      myWa: myWaParam || saved.myWa || "6281234567890",
+      clinic: clinicParam || matchedClinic?.name || saved.clinic || "BrightSmile Dental",
+      kota: kotaParam || matchedClinic?.kota || saved.kota || "Jakarta Selatan",
+      rating: ratingParam || matchedClinic?.rating || saved.rating || "4.9",
+      ulasan: ulasanParam || matchedClinic?.ulasan || saved.ulasan || "420",
+      alamat: alamatParam || matchedClinic?.alamat || saved.alamat || "Jl. Senopati No. 45, Kebayoran Baru, Jakarta Selatan",
+      dr: drParam || matchedClinic?.dr || saved.dr || "drg. Amanda Putri, Sp.KG",
+      wa: waParam || matchedClinic?.wa || saved.wa || "6281298765432",
+      myWa: myWaParam || matchedClinic?.mywa || saved.myWa || DEFAULT_MY_WA,
       isPitch: isPitchActive,
-      queryStr: searchParams.toString() ? `?${searchParams.toString()}` : (saved.queryStr || ""),
+      queryStr: searchParams.toString()
+        ? `?${searchParams.toString()}`
+        : routeSlug
+        ? `?p=${encodeURIComponent(routeSlug)}`
+        : (saved.queryStr || ""),
     };
 
     setClinicData(updated);
@@ -71,6 +98,9 @@ function ClinicContextProvider({ children }) {
       document.title = `${updated.clinic} | Praktek Dokter Gigi Spesialis di ${updated.kota}`;
     }
   }, [
+    pathname,
+    params,
+    pParam,
     clinicParam,
     kotaParam,
     ratingParam,
@@ -90,8 +120,8 @@ function ClinicContextProvider({ children }) {
     `Halo Admin ${clinic}, saya ingin konsultasi dan reservasi jadwal periksa gigi di ${clinic} (${kota}).`
   )}`;
 
-  // Link WhatsApp untuk Owner Klinik Klaim Website (Chat ke WA Pengembang/User)
-  const cleanMyWa = myWa.replace(/[^0-9]/g, "");
+  // Link WhatsApp untuk Owner Klinik Klaim Website (Chat ke WA Pengembang / User)
+  const cleanMyWa = (myWa || DEFAULT_MY_WA).replace(/[^0-9]/g, "");
   const waClaimUrl = `https://wa.me/${cleanMyWa}?text=${encodeURIComponent(
     `Halo Mas, saya pemilik/manajemen dari *${clinic}* (${kota}). Saya sudah lihat preview website yang dibuatkan. Saya tertarik untuk pasang website ini ke domain resmi kami.`
   )}`;
@@ -137,11 +167,11 @@ export function useClinic() {
       alamat: "Jl. Senopati No. 45, Kebayoran Baru, Jakarta Selatan",
       dr: "drg. Amanda Putri, Sp.KG",
       wa: "6281298765432",
-      myWa: "6281234567890",
+      myWa: DEFAULT_MY_WA,
       isPitch: false,
       queryStr: "",
       waBookingUrl: "https://wa.me/6281298765432",
-      waClaimUrl: "https://wa.me/6281234567890",
+      waClaimUrl: `https://wa.me/${DEFAULT_MY_WA}`,
     };
   }
   return context;

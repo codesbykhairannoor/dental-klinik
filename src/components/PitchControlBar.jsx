@@ -60,7 +60,7 @@ export default function PitchControlBar() {
     params.set("wa", preset.wa);
     params.set("dr", preset.dr);
     params.set("alamat", preset.alamat);
-    params.set("mywa", myWa || "6281234567890");
+    params.set("mywa", myWa || "6285718203535");
     window.location.href = `/?${params.toString()}`;
   };
 

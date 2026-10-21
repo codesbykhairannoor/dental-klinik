@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Phone, Smile, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useClinic } from "@/context/ClinicContext";
@@ -22,8 +22,8 @@ const Header = () => {
         <div className="flex justify-between items-center h-14 sm:h-16">
           <div className="flex items-center">
             <Link href={`/${queryStr}`} className="flex items-center space-x-2.5 group">
-              <div className="w-9 h-9 bg-gradient-to-b from-[#0077ED] to-[#0071E3] rounded-xl flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
-                <Smile className="h-5 w-5 text-white" />
+              <div className="w-9 h-9 flex items-center justify-center transition-transform group-hover:scale-105">
+                <img src="/logo.svg" alt="Dental Logo" className="w-9 h-9 object-contain" />
               </div>
               <span className="text-[18px] font-bold text-[#1D1D1F] tracking-tight">
                 {clinic}
