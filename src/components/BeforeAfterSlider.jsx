@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 export default function BeforeAfterSlider({
-  beforeImage = "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80",
-  afterImage = "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80",
+  beforeImage = "/teeth_smile_before.jpg",
+  afterImage = "/teeth_smile_after.jpg",
   beforeLabel = "Sebelum Perawatan",
   afterLabel = "Hasil di Klinik (Veneer & Whitening)",
   className = "",

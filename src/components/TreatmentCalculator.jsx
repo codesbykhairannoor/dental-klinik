@@ -109,28 +109,28 @@ export default function TreatmentCalculator() {
   return (
     <div className="rounded-[32px] sm:rounded-[40px] bg-white border border-black/[0.06] p-7 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.06)] space-y-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-black/[0.04]">
-        <div className="space-y-1.5">
-          <div className="inline-flex items-center gap-1.5 bg-[#0071E3]/10 text-[#0071E3] px-3.5 py-1 rounded-full text-xs font-semibold">
-            <Calculator className="h-3.5 w-3.5" />
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-1.5 bg-[#0071E3]/10 text-[#0071E3] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+            <Calculator className="h-4 w-4" />
             <span>Transparansi Biaya & Estimasi</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1D1D1F]">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#1D1D1F]">
             Simulasi Rencana Perawatan Gigi
           </h3>
-          <p className="text-sm text-[#86868B] max-w-lg">
-            Pilih tindakan yang Anda butuhkan untuk melihat estimasi biaya transparan di {clinic}.
+          <p className="text-base text-[#6E6E73] max-w-xl">
+            Pilih tindakan yang Anda butuhkan untuk melihat estimasi biaya transparan dan terukur di {clinic}.
           </p>
         </div>
 
         <div className="text-left md:text-right">
-          <p className="text-xs text-[#86868B] font-medium uppercase tracking-wider">
+          <p className="text-xs sm:text-sm text-[#86868B] font-semibold uppercase tracking-wider">
             Estimasi Investasi Senyum
           </p>
           <motion.div
             key={calculateTotal()}
             initial={{ scale: 0.95, opacity: 0.8 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0071E3]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0071E3]"
           >
             {totalFormatted}
           </motion.div>
@@ -138,7 +138,7 @@ export default function TreatmentCalculator() {
       </div>
 
       {/* Selectable Options in Apple Pill/Card Layout */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {treatments.map((t) => {
           const isSelected = selectedTreatments.includes(t.id);
           return (
@@ -146,51 +146,51 @@ export default function TreatmentCalculator() {
               key={t.id}
               whileTap={{ scale: 0.98 }}
               onClick={() => toggleTreatment(t.id)}
-              className={`rounded-2xl sm:rounded-3xl p-5 border cursor-pointer transition-all flex flex-col justify-between select-none ${
+              className={`rounded-2xl sm:rounded-3xl p-6 border cursor-pointer transition-all flex flex-col justify-between select-none ${
                 isSelected
-                  ? "bg-[#0071E3]/[0.03] border-[#0071E3] shadow-[0_4px_20px_rgba(0,113,227,0.12)] ring-1 ring-[#0071E3]"
+                  ? "bg-[#0071E3]/[0.04] border-[#0071E3] shadow-[0_4px_24px_rgba(0,113,227,0.15)] ring-1 ring-[#0071E3]"
                   : "bg-[#F5F5F7] border-transparent hover:border-black/[0.08] hover:bg-[#EAEAEA]"
               }`}
             >
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
                       isSelected ? "bg-[#0071E3] text-white" : "bg-black/5 text-[#86868B]"
                     }`}
                   >
                     {t.badge}
                   </span>
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center transition-colors ${
+                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
                       isSelected ? "bg-[#0071E3] text-white" : "border border-black/20"
                     }`}
                   >
-                    {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
+                    {isSelected && <Check className="h-3.5 w-3.5 stroke-[3]" />}
                   </div>
                 </div>
-                <h4 className="font-bold text-sm sm:text-base text-[#1D1D1F] pt-1">
+                <h4 className="font-bold text-base sm:text-lg text-[#1D1D1F] pt-1">
                   {t.name}
                 </h4>
-                <p className="text-xs text-[#86868B] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed">
                   {t.desc}
                 </p>
               </div>
 
-              <div className="pt-4 mt-3 border-t border-black/[0.04] flex items-center justify-between text-xs">
-                <span className="font-bold text-[#1D1D1F]">
+              <div className="pt-4 mt-4 border-t border-black/[0.04] flex items-center justify-between text-sm">
+                <span className="font-bold text-base text-[#1D1D1F]">
                   Rp {t.price.toLocaleString("id-ID")}
                 </span>
-                <span className="text-[#86868B] text-[11px]">{t.unit}</span>
+                <span className="text-[#86868B] text-xs">{t.unit}</span>
               </div>
 
               {/* Quantity controls if applicable */}
               {isSelected && (t.id === "tambal" || t.id === "veneer") && (
                 <div
-                  className="mt-3 pt-3 border-t border-[#0071E3]/20 flex items-center justify-between text-xs"
+                  className="mt-3.5 pt-3 border-t border-[#0071E3]/20 flex items-center justify-between text-xs sm:text-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <span className="text-[#86868B] text-[11px] font-medium">Jumlah Gigi:</span>
+                  <span className="text-[#6E6E73] font-medium">Jumlah Gigi:</span>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
@@ -198,11 +198,11 @@ export default function TreatmentCalculator() {
                         if (t.id === "tambal" && tambalQty > 1) setTambalQty(tambalQty - 1);
                         if (t.id === "veneer" && veneerQty > 1) setVeneerQty(veneerQty - 1);
                       }}
-                      className="w-6 h-6 rounded-full bg-white border border-black/10 flex items-center justify-center font-bold text-xs hover:bg-black/5"
+                      className="w-7 h-7 rounded-full bg-white border border-black/10 flex items-center justify-center font-bold text-sm hover:bg-black/5 shadow-xs"
                     >
                       -
                     </button>
-                    <span className="font-bold text-[#1D1D1F]">
+                    <span className="font-bold text-sm sm:text-base text-[#1D1D1F] px-1">
                       {t.id === "tambal" ? tambalQty : veneerQty}
                     </span>
                     <button
@@ -211,7 +211,7 @@ export default function TreatmentCalculator() {
                         if (t.id === "tambal" && tambalQty < 8) setTambalQty(tambalQty + 1);
                         if (t.id === "veneer" && veneerQty < 10) setVeneerQty(veneerQty + 1);
                       }}
-                      className="w-6 h-6 rounded-full bg-white border border-black/10 flex items-center justify-center font-bold text-xs hover:bg-black/5"
+                      className="w-7 h-7 rounded-full bg-white border border-black/10 flex items-center justify-center font-bold text-sm hover:bg-black/5 shadow-xs"
                     >
                       +
                     </button>
@@ -224,8 +224,8 @@ export default function TreatmentCalculator() {
       </div>
 
       {/* Action Footer */}
-      <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
-        <div className="text-xs text-[#86868B] space-y-0.5 text-center sm:text-left">
+      <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F5F5F7] p-6 rounded-2xl border border-black/[0.04]">
+        <div className="text-xs sm:text-sm text-[#6E6E73] space-y-0.5 text-center sm:text-left">
           <p className="font-semibold text-[#1D1D1F]">
             *Estimasi biaya di atas mencakup tindakan dasar & konsultasi awal.
           </p>
@@ -238,10 +238,10 @@ export default function TreatmentCalculator() {
           rel="noopener noreferrer"
           className="w-full sm:w-auto flex-shrink-0"
         >
-          <button className="w-full sm:w-auto rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.98] text-white font-medium px-6 py-3 text-xs sm:text-sm shadow-[0_4px_14px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2">
+          <button className="w-full sm:w-auto rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-[0.98] text-white font-semibold px-7 py-3.5 text-sm sm:text-base shadow-[0_4px_16px_rgba(0,113,227,0.3)] transition-all flex items-center justify-center gap-2">
             <MessageCircle className="h-4 w-4" />
             <span>Konsultasikan Rencana Ini via WhatsApp</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-4 w-4" />
           </button>
         </a>
       </div>

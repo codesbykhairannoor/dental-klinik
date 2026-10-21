@@ -11,14 +11,12 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          "'SF Pro Display'",
+          "'Plus Jakarta Sans'",
+          "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
-          "'SF Pro Text'",
-          "'SF Pro'",
-          "'Helvetica Neue'",
-          "Helvetica",
-          "Arial",
+          "'Segoe UI'",
+          "Roboto",
           "sans-serif",
         ],
       },

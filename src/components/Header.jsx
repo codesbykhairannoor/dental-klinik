@@ -25,29 +25,29 @@ const Header = () => {
               <div className="w-9 h-9 bg-gradient-to-b from-[#0077ED] to-[#0071E3] rounded-xl flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
                 <Smile className="h-5 w-5 text-white" />
               </div>
-              <span className="text-[17px] font-semibold text-[#1D1D1F] tracking-tight">
+              <span className="text-[18px] font-bold text-[#1D1D1F] tracking-tight">
                 {clinic}
               </span>
             </Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-7">
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[13px] text-[#1D1D1F]/80 hover:text-[#0071E3] font-normal tracking-tight transition-colors"
+                className="text-[15px] text-[#1D1D1F]/85 hover:text-[#0071E3] font-medium tracking-tight transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="flex items-center space-x-3.5">
-            <div className="hidden sm:flex items-center space-x-1.5 text-xs text-[#86868B] font-normal">
-              <Phone className="h-3.5 w-3.5 text-[#0071E3]" />
+          <div className="flex items-center space-x-4">
+            <div className="hidden sm:flex items-center space-x-1.5 text-sm text-[#86868B] font-medium">
+              <Phone className="h-4 w-4 text-[#0071E3]" />
               <span>{wa}</span>
             </div>
             <a href={waBookingUrl} target="_blank" rel="noopener noreferrer">
-              <button className="rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 text-white font-medium text-xs px-4 py-2 shadow-sm transition-all">
+              <button className="rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 text-white font-semibold text-sm px-5 py-2.5 shadow-sm transition-all">
                 Reservasi WhatsApp
               </button>
             </a>
