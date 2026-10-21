@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { ClinicProvider } from "@/context/ClinicContext";
 import VIPBanner from "@/components/VIPBanner";
+import PitchControlBar from "@/components/PitchControlBar";
 
 export const metadata = {
   title: "Klinik Spesialis Gigi Modern & Terpercaya",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <PitchControlBar />
         </ClinicProvider>
       </body>
     </html>
