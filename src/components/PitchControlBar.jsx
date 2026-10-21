@@ -66,6 +66,24 @@ export default function PitchControlBar() {
 
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
+  const getPitchMessage = () => {
+    const cleanDomain = clinic.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com";
+    return (
+      `Halo Dok / Tim Manajemen ${clinic},\n\n` +
+      `Salam kenal! Saya perhatikan ${clinic} memiliki reputasi sangat luar biasa di Google Maps (${rating} ⭐ dari ${ulasan} ulasan pasien di ${kota}).\n\n` +
+      `Melihat antusiasme pasien yang begitu tinggi, kami berinisiatif membuatkan preview website profil modern berstandar Apple UI khusus untuk ${clinic}, lengkap dengan sistem booking WhatsApp terintegrasi:\n\n` +
+      `👉 Akses Website Demo Klinik Anda di sini:\n${currentUrl}\n\n` +
+      `Keunggulan sistem website ini:\n` +
+      `• Desain Mewah & Responsif Cepat di smartphone pasien\n` +
+      `• Reservasi WhatsApp otomatis langsung terarah ke nomor klinik Anda (${wa})\n` +
+      `• Kalkulator Biaya Perawatan & Slider Interaktif Before-After hasil senyum\n` +
+      `• Sistem 100% Fleksibel: Siap di-custom penuh, integrasi Booking Kalender Dokter, POS / Kasir Klinik & Rekam Medis Pasien\n` +
+      `• Siap dihubungkan ke domain resmi (contoh: www.${cleanDomain})\n\n` +
+      `Website ini sudah siap kami serahkan dan tayangkan. Jika dokter atau tim manajemen tertarik untuk mengaktifkannya, bisa langsung hubungi WhatsApp saya di +62 857-1820-3535 atau klik tombol 'Klaim Website Ini' di bagian atas halaman demo.\n\n` +
+      `Terima kasih banyak Dok, sukses selalu untuk pelayanan ${clinic}! 🙏✨`
+    );
+  };
+
   const copyLink = () => {
     navigator.clipboard.writeText(currentUrl);
     setCopiedLink(true);
@@ -73,10 +91,17 @@ export default function PitchControlBar() {
   };
 
   const copyPitchMessage = () => {
-    const message = `Halo Dok / Tim Manajemen ${clinic},\n\nSalam kenal! Saya perhatikan ${clinic} memiliki reputasi bintang ${rating} dengan ${ulasan}+ ulasan pasien di ${kota}.\n\nKami berinisiatif membuatkan preview website profil modern berstandar Apple UI khusus untuk ${clinic}, sudah terintegrasi WhatsApp booking langsung:\n👉 ${currentUrl}\n\nJika tertarik mengaktifkan website ini ke domain resmi klinik Anda, silakan hubungi kami via tombol 'Klaim Website Ini' di atas. Terima kasih banyak Dok! 🙏`;
+    const message = getPitchMessage();
     navigator.clipboard.writeText(message);
     setCopiedPitch(true);
     setTimeout(() => setCopiedPitch(false), 2000);
+  };
+
+  const openDirectWa = () => {
+    const cleanNumber = wa.replace(/[^0-9]/g, "");
+    const msg = getPitchMessage();
+    const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -126,22 +151,32 @@ export default function PitchControlBar() {
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-xs">
+            <div className="pt-2 border-t border-white/10 space-y-2 text-xs">
               <button
-                onClick={copyLink}
-                className="rounded-full bg-white/10 hover:bg-white/20 active:scale-95 py-2 px-3 text-center font-medium flex items-center justify-center gap-1.5 transition-all"
+                onClick={openDirectWa}
+                className="w-full rounded-full bg-[#25D366] hover:bg-[#20bd5a] active:scale-95 py-2.5 px-4 text-center font-semibold flex items-center justify-center gap-2 transition-all text-white shadow-md shadow-[#25D366]/25"
               >
-                {copiedLink ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
-                <span>{copiedLink ? "Link Tersalin!" : "Salin Link"}</span>
+                <Send className="h-4 w-4" />
+                <span>Chat WA ke Klinik (Pesan Otomatis)</span>
               </button>
 
-              <button
-                onClick={copyPitchMessage}
-                className="rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 py-2 px-3 text-center font-medium flex items-center justify-center gap-1.5 transition-all text-white shadow-sm"
-              >
-                {copiedPitch ? <Check className="h-3.5 w-3.5 text-white" /> : <Send className="h-3.5 w-3.5" />}
-                <span>{copiedPitch ? "Draft Tersalin!" : "Salin Draft WA"}</span>
-              </button>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={copyLink}
+                  className="rounded-full bg-white/10 hover:bg-white/20 active:scale-95 py-2 px-3 text-center font-medium flex items-center justify-center gap-1.5 transition-all text-white"
+                >
+                  {copiedLink ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+                  <span>{copiedLink ? "Tersalin!" : "Salin Link"}</span>
+                </button>
+
+                <button
+                  onClick={copyPitchMessage}
+                  className="rounded-full bg-[#0071E3] hover:bg-[#0077ED] active:scale-95 py-2 px-3 text-center font-medium flex items-center justify-center gap-1.5 transition-all text-white shadow-sm"
+                >
+                  {copiedPitch ? <Check className="h-3.5 w-3.5 text-white" /> : <Send className="h-3.5 w-3.5" />}
+                  <span>{copiedPitch ? "Tersalin!" : "Salin Draft WA"}</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
